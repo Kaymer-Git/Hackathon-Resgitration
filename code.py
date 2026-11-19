@@ -57,7 +57,7 @@ def choice5():
         print("There are no check-ins to remove.")
 def choice6():
     rm = input("You sure you want to remove all check-ins: ")
-    while rm != "yes" or rm != "no":
+    while rm != "yes" and rm != "no":
         rm = input("Error, do you want to remove all check-ins(yes/no): ")
     if rm == "yes":
         checked_in.clear()
@@ -68,13 +68,43 @@ def choice7():
     if name in registrations:
         print("This student is already registered.")
     else:
-        print()
+        for i in workshops:
+            print(f"{workshops.index(i) + 1}. {i}")
         workshop = int(input("Enter workshop: "))
-        
+        while workshop != 1 and workshop != 2 and workshop != 3:
+            print("Enter 1, 2, or 3")
+            workshop = int(input("Enter workshop: "))
+        if workshop == 1:
+            registrations[name] = "Game Design"
+        elif workshop == 2:
+            registrations[name] = "AI Chatbots"
+        elif workshop == 3:
+            registrations[name] = "Robotics"
 def choice8():
-
+    student_name = input("Enter student name: ")
+    if student_name not in registrations:
+        print("Student not found")
+    else:
+        print(registrations[student_name])
+        for i in workshops:
+            print(f"{workshops.index(i) + 1}. {i}")
+        workshop = int(input("Enter workshop: "))
+        while workshop != 1 and workshop != 2 and workshop != 3:
+            print("Enter 1, 2, or 3")
+            workshop = int(input("Enter workshop: "))
+        if workshop == 1:
+            registrations[student_name] = "Game Design"
+        elif workshop == 2:
+            registrations[student_name] = "AI Chatbots"
+        elif workshop == 3:
+            registrations[student_name] = "Robotics"
 def choice9():
-
+    print("========== GAME DESIGN CHECK-INS ==========")
+    print()
+    print(f"Checked_in: {len(checked_in)}")
+    for i in checked_in:
+        if i in registrations:
+            print(f"- {i}")
 print("========== HACKATHON CHECK-IN ==========")
 print()
 while Exit == False:

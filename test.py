@@ -7,6 +7,8 @@ registrations = {
     "sam": "Game Design",
     "taylor": "AI Chatbots"
 }
-name = input("Enter student name: ")
-if name in registrations:
-    print("This student is already registered.")
+student_name = input("Enter student name: ")
+if student_name not in registrations:
+    print("Student not found")
+else:
+    print(registrations[student_name])
